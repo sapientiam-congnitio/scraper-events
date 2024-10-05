@@ -5,7 +5,7 @@ import re
 def clean_articles(concert_list):
     results = []
     
-    for idx, event in enumerate(concert_list, start=0):
+    for idx, event in enumerate(concert_list[:10], start=0):
             article_link = event['href']
 
             article_page = requests.get(article_link)
