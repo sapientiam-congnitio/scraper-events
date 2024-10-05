@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import re
+from venue_time import getVenueTime
 
 def clean_articles(concert_list):
     results = []
@@ -27,12 +28,16 @@ def clean_articles(concert_list):
                     ]
                 clean_description = ' '.join(clean_sentences)
 
+                location, event_datetime = getVenueTime(article_page_soup)
+
             results.append({
                     'title': article_title,
                     'description': clean_description,
-                    'link': article_link
+                    'link': article_link,
+                    'location': location,
+                    'event_time': event_datetime
                 })
             count += 1
-            if count==10:
+            if count==1:
                 break
     return results
