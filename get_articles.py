@@ -4,7 +4,7 @@ import re
 
 def clean_articles(concert_list):
     results = []
-    count += 1
+    count = 0
     for idx, event in enumerate(concert_list, start=0):
             article_link = event['href']
 
